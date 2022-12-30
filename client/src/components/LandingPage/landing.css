@@ -1,0 +1,32 @@
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+}
+.link{
+    position: absolute;
+    top: 24%;
+    left: 42.5%;
+}
+.h1{
+   color: crimson;
+   font-family: fantasy;
+   letter-spacing: 2px;
+}
+
+ .btn{
+    border: 1px solid #ff0303;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: unset;
+    color: white;
+    cursor: pointer;
+    
+} 
+
+ /* https://cdn.wallpapersafari.com/64/65/YflnOP.gif */
+     /* https://cdnb.artstation.com/p/assets/images/images/014/665/033/original/yargon-kerman-webp-net-gifmaker-39.gif?1544919451 */ /* https://cdna.artstation.com/p/assets/images/images/042/626/882/original/christopher-anry-planningtherox-large720p.gif?1635021484 */
+     /* /* https://cdna.artstation.com/p/assets/images/images/042/626/882/original/christopher-anry-planningtherox-large720p.gif?1635021484 */
