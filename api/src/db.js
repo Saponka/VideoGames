@@ -36,8 +36,8 @@ const { Videogame,Genre } = sequelize.models;
   modelGenres(sequelize);
  */
 // Associations
- Videogame.belongsToMany(Genre, { through: 'videogameGenre' });
- Genre.belongsToMany(Videogame, { through: 'videogameGenre' })
+ Videogame.belongsToMany(Genre, { through: 'videogamegenre' });
+ Genre.belongsToMany(Videogame, { through: 'videogamegenre' });
 
 //Videogame.hasMany(Genres);
 

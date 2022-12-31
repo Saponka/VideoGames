@@ -4,7 +4,7 @@ const {Videogame, Genre} = require ('../db');
 const router = Router();
 ////
 ///1 y 2//get all db y api y get by name
-router.get('/', async (req, res, next)=>{
+router.get('/', async (req, res)=>{
   try {
     const {name} = req.query;//name por query
     let juegos = await AllVideoGames();
@@ -23,47 +23,48 @@ router.get('/', async (req, res, next)=>{
        
           res.send(juegos);
       }
-  } catch (error) {
-      next(error);
-  }
+  }  catch(error) {
+    res.status(400).send(error.message);
+}
 })
 //3//get by id db y api
-router.get('/:id', async (req, res, next)=>{
+router.get('/:id', async (req, res)=>{
   const {id} = req.params   
   try {
     //inteta buscar el id con la funcion que busca el id en api y db
       const filtroId = await videogameID(id);
-      return res.send(filtroId);    
+      return res.status(200).send(filtroId);    
  } catch (error) {
-      next(error);
+      res.status(404).send(error);
   }
 })
 //4//post crear video game
-router.post('/', async (req, res, next) => {
-  const {name, released, rating, platforms, description,genres} = req.body;
+router.post('/', async (req, res) => {
+  const {name, released, rating, platforms, description,genres,image} = req.body;
   try {
-      let newGame = await Videogame.create ({ //create el objeto con los atributos de mi new videogame
+      let newGame = await Videogame.create ({ //modelo Videogame create a new videogame
           name,
           released,
           rating,
           platforms,
-          description
+          description,
+          image
       });
-      const relacion = await Genre.findAll({ //en generos, buscame todos aquellos  //donde
+       const relacion = await Genre.findAll({ 
           where: {name:genres}
-      })
-      newGame.addGenre(relacion); //a mi juego creado, le agrego algun genero
-      res.send(newGame);
+      }); 
+     
+       newGame.addGenre(relacion); //al juego le agrego un genero
+       return res.status(201).send(newGame);
   } catch(error) {
-      next(error);
+      res.status(400).send(error.message);
   }
 })
-//5//get genres
 //delete opcional
-router.delete('/:id', async (req,res,next)=>{
+router.delete('/:id', async (req,res)=>{
   const {id} = req.params//req un id por params
   try {
-    //lo buscamos por id usando findByPk(2 parametros, id y un objeto)
+         // busca por id  findByPk(id,objeto)
   const videoDelete= await Videogame.findByPk(id,{
       include:{
           model: Genre,
@@ -72,35 +73,19 @@ router.delete('/:id', async (req,res,next)=>{
               attributes:[]
           }}
   })
-  //platforms
-  router.get('/platforms', async (req, res, next) => {
-        
-    try {
-        const all = await infoApi();
-        const allPlatforms = [];
-        all.map(g => g.platforms.map(p => {
-            if(!allPlatforms.includes(p)) {
-                allPlatforms.push(p)
-            }
-        }))
-    
-        allPlatforms.length ? res.status(200).json(allPlatforms) : res.status(404).send('Error')
-
-        }catch(e) {
-            next(e)
-        }
-    })
-  //si lo matchea entonces lo elimina si no 404 
- /*  if(videoDelete){
-      await videoDelete.destroy();
-      return res.send('Videojuego eliminado!')
-  } */
-  res.status(404).send('Videojuego no encontrado')
- } catch (error) {
-     next(error)
- }
-})
+    //si lo encuentra lo destroy 
+   if(videoDelete){
+        await videoDelete.destroy();
+       return res.send('Videojuego eliminado!'); 
+    } 
+    res.status(404).send('Videojuego no encontrado')   
+  }catch(error){
+     res.status(400).send(error)
+  } 
+})  
 //put opcional
 router.put('/editar')
 ///////////////////////////////
 module.exports = router
+ 
+
