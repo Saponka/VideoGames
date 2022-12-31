@@ -25,7 +25,7 @@ export default function CreateVideoGame() {
       released: "",
       rating: "",
       genres: [],
-      /* platforms: [], */
+      platforms: [], 
     });
   
     const [error, setErrors] = useState({}); //me creo un estado local, en donde error = {}
@@ -81,27 +81,11 @@ export default function CreateVideoGame() {
       if(!error.name){
        if(allGames.find((n) => n.name === input.name)){
         alert('El nombre del juego ya existe');
-        setInput({
-          name: "",
-         image: "",
-         description: "",
-         released: "",
-         rating: "",
-         genres: [],
-         platforms: [],
-        });
+        setInput({});
         history.push('/home')
        }
        dispatch(createVideogame(input));
-       setInput({
-         name: "",
-         image: "",
-         description: "",
-         released: "",
-         rating: "",
-         genres: [],
-         platforms: [],
-       });
+       setInput({});
        alert("Juego creado exitosamente.");
        history.push('/home')
 

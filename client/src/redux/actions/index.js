@@ -52,13 +52,12 @@ export const getVideoGamesId = (id) => {
 };
 //create
 export const createVideogame = (videogame) => {
-    return async function( dispatch ) {
+    return async function(dispatch) {
 
+            /* const create = await axios.post(`http://localhost:3001/videogames`, videogame)
+            return create  */
         
-           /*  const create = axios.post(`http://localhost:3001/videogames`, videogame)
-            return create.data */
-        
-         try {
+          try {
             const create = await axios.post('http://localhost:3001/videogames', videogame)
             //return create
              return dispatch({
@@ -67,7 +66,7 @@ export const createVideogame = (videogame) => {
             }) 
         } catch (error) {
             return console.error("No se puede crear el Videogame, por favor intente con otro nombre.", error.message)
-        } 
+        }   
     };
 };
 //genero

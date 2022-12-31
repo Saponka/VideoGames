@@ -1,6 +1,7 @@
 import React,{useEffect}from 'react';
 import Nav from '../Buscador/Nav';
 import Card from '../Card/Card';
+import Loading from '../Loading/Loading';
 import '../Card/card.css';
  //redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,6 +22,7 @@ const Home = () => {
         <h1>VideoGames Dungeon</h1>
       </div>
       <div className='div'>
+      {/* <Loading/> */}
         {allVideos.length > 0
           ? allVideos?.map((vg,id) => {
               return (
@@ -36,7 +38,7 @@ const Home = () => {
                 />
               );
             })
-          : null} {/* loading */} 
+          : <Loading/>}  
       </div>
     </div>
   )

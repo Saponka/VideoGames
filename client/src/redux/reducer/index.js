@@ -14,6 +14,7 @@ import {
       videogames:{},
       allVideogames:[],
       genres: [],
+      createdvideogames:[]
   }
   
   function rootReducer (state = initialState, action){
@@ -22,27 +23,22 @@ import {
           case GET_VIDEOGAMES:
               return{
                   ...state,
-                 
                   allVideogames: action.payload, 
               }
-
-        
           case GET_NAME:
               return{
                   ...state,
                   videogames: action.payload
               }
-
           case GET_VIDEOGAMES_BY_ID: // detalle
             return {
                 ...state,
                 videogames: action.payload
             };
-
           case CREATE_VIDEOGAME:
             return {
                 ...state,
-                videogames: action.payload
+                createdvideogames: action.payload
             }
           case GET_BY_GENRES:
                 return {
