@@ -1,18 +1,18 @@
 import axios from 'axios'
-export const GET_VIDEOGAMES='GET_VIDEOGAMES';
-export const GET_NAME='GET_NAME';
+export const GET_VIDEOGAMES ='GET_VIDEOGAMES';
+export const GET_NAME ='GET_NAME';
 export const GET_VIDEOGAMES_BY_ID = "GET_VIDEOGAMES_BY_ID";
-export const CREATE_VIDEOGAME = "CREATE_VIDEOGAMES";
+export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 export const GET_PLATFORMS = 'GET_PLATFORMS';
 export const GET_BY_GENRES = "GET_BY_GENRES";
 export const CLEAR_STATE = 'CLEAR_STATE';
-//export const HOME = 'HOME';
+
 
 //todos
 export const getvideogame= ()=>{
     return async function (dispatch){
         try {
-            let videogames= await axios.get('http://localhost:3001/videogames')
+            let videogames = await axios.get('http://localhost:3001/videogames')
             return dispatch({
                 type: GET_VIDEOGAMES,
                 payload: videogames.data
@@ -43,7 +43,7 @@ export const getVideoGamesId = (id) => {
             const videogames = await axios.get(`http://localhost:3001/videogames/${id}`)
             return dispatch({
                 type: GET_VIDEOGAMES_BY_ID,
-                payload: videogames.data,
+                payload: videogames.data
             });
         } catch (error) {
             return console.log("Im just using another Route to render this.")
@@ -52,13 +52,22 @@ export const getVideoGamesId = (id) => {
 };
 //create
 export const createVideogame = (videogame) => {
-    return async function(dispatch) {
-        try {
+    return async function( dispatch ) {
+
+        
+           /*  const create = axios.post(`http://localhost:3001/videogames`, videogame)
+            return create.data */
+        
+         try {
             const create = await axios.post('http://localhost:3001/videogames', videogame)
-            return create
+            //return create
+             return dispatch({
+                type:"CREATE_VIDEOGAME",
+                payload:create
+            }) 
         } catch (error) {
-            return console.error("I couldn't create that Videogame. Please try again with a different name.", error.message)
-        }
+            return console.error("No se puede crear el Videogame, por favor intente con otro nombre.", error.message)
+        } 
     };
 };
 //genero
@@ -69,6 +78,7 @@ export const createVideogame = (videogame) => {
         return dispatch({
           type: "GET_BY_GENRES",
           payload: data,
+          /* .data.map(genero => genero) */
         });
       } catch (err) {
         console.error(err);

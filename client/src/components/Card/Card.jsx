@@ -8,7 +8,7 @@ export default function Card({id,name,image,rating,genres}) {
         
       <div className='card' >
         <Link  to={`/videogames/${id}`}>
-        <p ><span>{name}</span>  </p>
+        <p>{name} </p>
         </Link>
       <img className='img' src={image} alt={name}  />
       <p>Rating: {rating } ⭐</p>

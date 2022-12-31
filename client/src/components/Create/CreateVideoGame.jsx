@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
-
-//import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { getByGenres,createVideogame,getvideogame} from '../../redux/actions'
+import { getByGenres,createVideogame} from '../../redux/actions'
 import { NavLink} from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import './form.css';
+import '../../components/Create/form.css';
 
 function validate(input){
   const errors = {}
@@ -27,7 +25,7 @@ export default function CreateVideoGame() {
       released: "",
       rating: "",
       genres: [],
-      platforms: []
+      /* platforms: [], */
     });
   
     const [error, setErrors] = useState({}); //me creo un estado local, en donde error = {}
@@ -41,7 +39,7 @@ export default function CreateVideoGame() {
   
     useEffect(() => {
       dispatch(getByGenres());
-      dispatch(getvideogame())
+      
     }, [dispatch]);
 
           //////
@@ -54,15 +52,44 @@ export default function CreateVideoGame() {
     function handleGenres(e) {
        const {value} = e.target;
         setInput({...input,
-          genres:value})
-      
+          genres:value}) 
     }
+    ///////////////
+    const plataformas = [
+      'Android',
+      'iOS',
+      'Linux',
+      'macOS',
+      'Nintendo Switch',
+      'PC',
+      'PlayStation 3',
+      'PlayStation 4',
+      'PlayStation 5',
+      'PS Vita',
+      'Web',
+      'Xbox 360',
+      'Xbox One',
+      'Xbox Series S/X',
+      'Xbox',
+    ]
+    //////////////////
+
+
+
     function handleSubmit(e) {
       e.preventDefault();
       if(!error.name){
        if(allGames.find((n) => n.name === input.name)){
         alert('El nombre del juego ya existe');
-        setInput({});
+        setInput({
+          name: "",
+         image: "",
+         description: "",
+         released: "",
+         rating: "",
+         genres: [],
+         platforms: [],
+        });
         history.push('/home')
        }
        dispatch(createVideogame(input));
@@ -80,10 +107,10 @@ export default function CreateVideoGame() {
 
       }else if (error.name){
         alert('Llene los campos correctamente');
-        setInput({})
+        setInput({});
       }
-    } 
-  
+    }  
+    
  
     return (
       <div>
@@ -102,7 +129,7 @@ export default function CreateVideoGame() {
                 placeholder="Name"
                 onChange={(e) => handleChange(e)}
                 /> 
-              {error.name ? <span className='span'>{error.name}</span>: null}
+              {error.name ? <span className='error'>{error.name}</span>: null}
             </div>
   
   
@@ -116,7 +143,7 @@ export default function CreateVideoGame() {
                 onChange={(e) => handleChange(e)}
                 placeholder='URL...'
                 /> 
-              {error.image ? <span className='span'>{error.image}</span>:null}
+              {error.image ? <span className='error'>{error.image}</span>:null}
             </div>
   
            <div>
@@ -130,7 +157,7 @@ export default function CreateVideoGame() {
                 placeholder='yyyy-mm-dd'
                 onChange={(e) => handleChange(e)}
                 /> 
-              {error.released ?<span className='span'>{error.released}</span>:null }
+              {error.released ?<span className='error'>{error.released}</span>:null }
             </div>
   
             <div >
@@ -143,7 +170,7 @@ export default function CreateVideoGame() {
                 value={input.rating}
                 onChange={(e) => handleChange(e)}
                 /> 
-              {error.rating ?<span className='span'>{error.rating}</span>: null}
+              {error.rating ?<span className='error'>{error.rating}</span>: null}
             </div>
   
   
@@ -151,9 +178,9 @@ export default function CreateVideoGame() {
                 <label>Generos: </label>
               <select  id="genres" defaultValue="" onChange={(e) => handleGenres(e)}>
                 <option  value='' disabled hidden>géneros...</option>
-                {  generos.map((g,id) => {
+                {  generos?.map((g) => {
                   return (
-                    <option key={id} value={g.name}>{g.name}</option>
+                    <option key={g.id} value={g.name}>{g.name}</option>
                     );
                   })}
               </select> 
@@ -162,19 +189,17 @@ export default function CreateVideoGame() {
   
             <div >
                     <label>Plataformas:  </label>
-                <select  id="platforms" defaultValue="" >
+                <select  defaultValue="" >
                     <option value="" disabled hidden>plataformas...</option>
                     
                       return (
-                        <option>'PC'</option>
-                       
+                        { plataformas?.map((p,id) => {
+                  return (
+                    <option key={id} id={p.id} value={p}>{p}</option>
+                    );
+                  })}
                 </select> 
-             {/*    {input.platforms.map((p) => (
-                  <div >
-                    <div >{p}</div>
-                    <button className={s.btn_remove} onClick={() => handleDeleteP(p)} key={p} value={p}><span >X</span></button> 
-                  </div>
-                ))} */}
+               
             </div>
   
             <div >
@@ -188,7 +213,7 @@ export default function CreateVideoGame() {
                 onChange={(e) => handleChange(e)}
                 > 
                 </textarea>
-              {error.description ?<span className='span'>{error.description}</span>:null}
+              {error.description ?<span className='error'>{error.description}</span>:null}
             </div>
        
         <div>

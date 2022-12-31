@@ -22,7 +22,7 @@ const Home = () => {
       </div>
       <div className='div'>
         {allVideos.length > 0
-          ? allVideos.map((vg,id) => {
+          ? allVideos?.map((vg,id) => {
               return (
                 <Card
                   key={id}
@@ -36,8 +36,7 @@ const Home = () => {
                 />
               );
             })
-          : null} 
-        <Card/> 
+          : null} {/* loading */} 
       </div>
     </div>
   )
