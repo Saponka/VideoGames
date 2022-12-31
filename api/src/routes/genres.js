@@ -1,31 +1,34 @@
 const { Router } = require('express');
 const {Genre} = require('../db.js')
-//const  axios = require('axios');
-const { infoGeneros } = require('../Controllers/generos')
 const router = Router();
+const axios = require('axios')
+
 
 router.get('/', async (req, res)=>{
     try {
-        const respuesta = await infoGeneros();
+     
+        const respuesta = await axios.get(`https://api.rawg.io/api/genres?key=bc1bb0ae62664232a0e926209f30dd87`)
         const generosDb = await Genre.findAll();
         
+
         if(!generosDb.length){
 
-            const map = respuesta.map(e=>({
+              const map = respuesta.map(e=>({
                 id: e.id,
                 name: e.name
-            }));
+            }));  
             
             const guardar = await Genre.bulkCreate(map)
-            res.send(guardar)
+            res.send(guardar) 
         }else{
-            const filtroDb = generosDb.map(e=>{
+           
+             const filtroDb = generosDb.map(e=>{
                 return{
                     id: e.id,
                     name: e.name
                 }
             })
-            res.send(filtroDb)
+            res.send(filtroDb) 
         }
     }catch(error) {
         res.status(404).send(error)

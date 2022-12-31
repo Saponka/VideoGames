@@ -40,7 +40,7 @@ router.get('/:id', async (req, res)=>{
 })
 //4//post crear video game
 router.post('/', async (req, res) => {
-  const {name, released, rating, platforms, description,genres,image} = req.body;
+  const {name, released, rating, platforms, description,genre,image} = req.body;
   try {
       let newGame = await Videogame.create ({ //modelo Videogame create a new videogame
           name,
@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
           image
       });
        const relacion = await Genre.findAll({ 
-          where: {name:genres}
+          where: {name:genre}
       }); 
      
        newGame.addGenre(relacion); //al juego le agrego un genero
@@ -84,7 +84,7 @@ router.delete('/:id', async (req,res)=>{
   } 
 })  
 //put opcional
-router.put('/editar')
+
 ///////////////////////////////
 module.exports = router
  

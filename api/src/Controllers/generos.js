@@ -1,4 +1,4 @@
-const axios = require('axios')
+/* const axios = require('axios')
 const {API_KEYY} = process.env
 const URL= 'https://api.rawg.io/api/genres'
 
@@ -11,4 +11,4 @@ const infoGeneros= async()=>{
 
 module.exports={
     infoGeneros,
-}
+} */
