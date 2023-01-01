@@ -1,15 +1,19 @@
 import axios from 'axios'
+//
 export const GET_VIDEOGAMES ='GET_VIDEOGAMES';
-export const GET_NAME ='GET_NAME';
 export const GET_VIDEOGAMES_BY_ID = "GET_VIDEOGAMES_BY_ID";
-export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
-export const GET_PLATFORMS = 'GET_PLATFORMS';
+export const GET_NAME ='GET_NAME';
 export const GET_BY_GENRES = "GET_BY_GENRES";
+export const GET_PLATFORMS = 'GET_PLATFORMS';
+//
+export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
+//
+export const ORDER_BY_NAME = 'ORDER_BY_NAME';
+//
 export const CLEAR_STATE = 'CLEAR_STATE';
 
-
 //todos
-export const getvideogame= ()=>{
+export const getvideogame = ()=>{
     return async function (dispatch){
         try {
             let videogames = await axios.get('http://localhost:3001/videogames')
@@ -23,13 +27,13 @@ export const getvideogame= ()=>{
     }
 }
 //name
-export const getName=(name)=>{
+export const getName = (name) => {
     return async function(dispatch){
         try {
-            let json = await axios.get(`http://localhost:3001/videogames?name=${name}`)
+            let response = await axios.get(`http://localhost:3001/videogames?name=${name}`)
             return dispatch({
                 type: GET_NAME,
-                payload: json.data
+                payload: response.data
             })
         } catch (error) {
             alert(`El nombre " ${name} " no corresponde a un VideoGame existente`)
@@ -76,7 +80,7 @@ export const createVideogame = (videogame) => {
         const { data } = await axios.get(`http://localhost:3001/genres`);
         return dispatch({
           type: "GET_BY_GENRES",
-          payload: data,
+          payload: data
           /* .data.map(genero => genero) */
         });
       } catch (err) {
@@ -94,6 +98,13 @@ export const createVideogame = (videogame) => {
         })
     }
   };
+  //sort 
+  export const orderByName = (name) => {
+    return {
+        type: ORDER_BY_NAME,
+        payload: name,
+    };
+};
   //filters
   //reset
 export const resetState = () => {
