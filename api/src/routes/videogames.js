@@ -54,8 +54,8 @@ router.post('/', async (req, res) => {
           where: {name:genre}
       }); 
      
-       newGame.addGenre(relacion); //al juego le agrego un genero
-       return res.status(201).send(newGame);
+       newGame.addGenre(relacion); // agrego genero //setGenre
+       return res.status(201).send(newGame);//201 created
   } catch(error) {
       res.status(400).send(error.message);
   }
