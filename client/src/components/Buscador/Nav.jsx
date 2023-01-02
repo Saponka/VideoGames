@@ -1,4 +1,4 @@
-import React,{useState}from "react";
+import React from "react";
 import '../Buscador/nav.css';
 import { Link,useHistory } from 'react-router-dom';
 import Search from "./Search";
@@ -20,16 +20,12 @@ const handleName = (e) => {
 };
 
 ///////
-/* function handleHome(e){
-  e.preventDefault()
-  //dispatch(home())
-  //setPaginaActual(1);
-} */
+
 
 //reset
 function reset(e) {
-    dispatch(getvideogame())
-   //setText("");
+    dispatch(getvideogame());
+
    
   }
 

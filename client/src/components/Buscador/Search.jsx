@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { getName } from '../../redux/actions/index'
+import React, { useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import { getName } from '../../redux/actions/index';
 
 
 
 export default function Search(){
 
     const dispatch = useDispatch();
+    let history = useHistory();
     const [name, setName] = useState('');
-    //const videogames = useSelector((state) => state.videogames);
+    const videogames = useSelector((state) => state.allVideogames);
 
 
-    function handleImputChange(e){
+    function handleInputChange(e){
       e.preventDefault()
       setName(e.target.value)
       console.log(e.target.value);
@@ -20,12 +22,11 @@ export default function Search(){
     function handleSubmit(e){
       e.preventDefault();
       
-       /* let match = videogames.find(
-        (p)=> p.name.trim().toLowerCase() === name.trim().toLowerCase()
-       ); */
+        let match = videogames.filter((p)=> p.name); 
 
-       if(name){
-       dispatch(getName(name));
+       if(match){
+       dispatch(getName(match.name));
+       history.push(`/videogames/${match.name}`)
         setName('');
        }else{
         alert('Por favor coloca el nombre de un VideoGame para buscar')
@@ -35,20 +36,18 @@ export default function Search(){
       // name ? dispatch(getName(name)):alert('Por favor coloca el nombre de un VideoGame para buscar')
       //setName('') 
       //setPaginaActual(1)
-      console.log(name);
+      console.log(match.name);
     }
    
 
   return (    
     <div>
       <form onSubmit={handleSubmit} /*  */>
-        <input
-        id="name" 
-        autoComplete='off'
+        <input 
         type='text'
         value={name}
         placeholder='Ingrese el nombre'
-        onChange={(e)=>handleImputChange(e)}
+        onChange={handleInputChange}
         
         />
         <button type="submit" onClick={() => setName("")}>Buscar</button>

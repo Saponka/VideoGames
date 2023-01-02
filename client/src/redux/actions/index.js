@@ -105,7 +105,8 @@ export const createVideogame = (videogame) => {
         payload: name,
     };
 };
-  //filters
+//sort rating
+  //filters x genre
   //reset
 export const resetState = () => {
     return {type: CLEAR_STATE}

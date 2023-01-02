@@ -29,7 +29,7 @@ import {
           case GET_NAME:
               return{
                   ...state,
-                  videogames: action.payload
+                  allVideogames: action.payload
               }
           case GET_VIDEOGAMES_BY_ID: // detalle
             return {
