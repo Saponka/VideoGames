@@ -6,18 +6,13 @@ const axios = require('axios')
 
 router.get('/', async (req, res)=>{
     try {
-     
         const respuesta = await axios.get(`https://api.rawg.io/api/genres?key=bc1bb0ae62664232a0e926209f30dd87`)
         const generosDb = await Genre.findAll();
-        
-
         if(!generosDb.length){
-
               const map = respuesta.map(e=>({
                 id: e.id,
                 name: e.name
-            }));  
-            
+            }));   
             const guardar = await Genre.bulkCreate(map)
             res.send(guardar) 
         }else{

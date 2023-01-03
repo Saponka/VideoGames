@@ -10,7 +10,7 @@ const infoApi = async() => {
     let url = `${URL}?key=${API_KEYY}`;
     let videojuegos = [];
     try {
-        for(let i=0; i<=5; i++) { //con un for recorro mi API, ya que es un arreglo, 5 veces
+        for(let i=0; i<=5; i++) { //con un for  5 veces para la API,es un arreglo.
             const juegos = await axios.get(url) //realizo la peticion
             //en mi .data podemos encontrar dos propiedades, results que es es aquello que voy a mapear
             juegos.data.results.map(vg => { //a la respuesta/resultado lo mapeo
@@ -65,7 +65,6 @@ const nameApi = async (name) => {
     const dataSearch = await axios.get(`${URL2}${name}&key=${API_KEYY}`) 
   
     try {
-        //[{}, {}, {}]
         const videogameSearch = await dataSearch.data.results.map(e => { 
             return {
                 id: e.id,
@@ -73,11 +72,11 @@ const nameApi = async (name) => {
                 released: e.released,
                 image: e.background_image,
                 rating: e.rating,
-                platforms: e.platforms?.map(e => e.platform.name ),// [{platfom{}}] => [""]
-                genres: e.genres?.map(e => e.name ) // [{}] => ['']
+                platforms: e.platforms?.map(e => e.platform.name),
+                genres: e.genres?.map(e => e.name)
             }
         })
-        return videogameSearch; //=> [{}]
+        return videogameSearch; 
     }catch(error) {
         console.error(error)
     }
