@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
+//import { useHistory } from "react-router-dom";
+//redux
 import { useDispatch,useSelector } from 'react-redux';
-import { useHistory } from "react-router-dom";
 import { getName } from '../../redux/actions/index';
-
+import styles from '../Buscador/nav.module.css';
 
 
 export default function Search(){
 
     const dispatch = useDispatch();
-    let history = useHistory();
     const [name, setName] = useState('');
     const videogames = useSelector((state) => state.allVideogames);
-
 
     function handleInputChange(e){
       e.preventDefault()
@@ -21,38 +20,33 @@ export default function Search(){
 
     function handleSubmit(e){
       e.preventDefault();
-      
-        let match = videogames.filter((p)=> p.name); 
+
+      const match = videogames.find((p) => p.name  ); 
 
        if(match){
        dispatch(getName(match.name));
-       history.push(`/videogames/${match.name}`)
         setName('');
        }else{
         alert('Por favor coloca el nombre de un VideoGame para buscar')
         setName('');
        
        }
-      // name ? dispatch(getName(name)):alert('Por favor coloca el nombre de un VideoGame para buscar')
-      //setName('') 
-      //setPaginaActual(1)
       console.log(match.name);
+      console.log(match);
     }
    
-
   return (    
     <div>
-      <form onSubmit={handleSubmit} /*  */>
+      <form onSubmit={handleSubmit} >
         <input 
         type='text'
         value={name}
         placeholder='Ingrese el nombre'
         onChange={handleInputChange}
-        
+        className={styles.btn2}
         />
-        <button type="submit" onClick={() => setName("")}>Buscar</button>
+        <button className={styles.btn2} type="submit" >Buscar</button>
       </form>
-
     </div> 
   )
 }

@@ -1,0 +1,41 @@
+
+.card{
+    border:1px solid #607d8b;
+    border-radius: 15px;
+    width: 305px;
+    background: #F0F2F0;  
+    background: -webkit-linear-gradient(to right, #070708, #a2b3a2,#070708);  
+    background: linear-gradient(to right, #070708, #a2b3a2,#070708);
+    box-shadow: 0 10px 25px #73429e, 0 5px 5px rgb(31, 30, 30);
+    transition: all 0.7s linear;  
+}
+.card:hover{
+    box-shadow: 0 10px 25px #f506f1, 10px 5px 12px rgb(76, 74, 78);
+    transition: all 0.7s linear;  
+}
+p,h3{
+    color: antiquewhite;
+    font-family: 'Rock Salt'; 
+}
+h3:hover{
+    color: #f90404;
+}
+a{
+    text-decoration: none;
+}
+.img{
+    width: 300px;
+    height: 250px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+.div{
+    padding: 10px;
+    display: grid;
+    justify-items: center;
+    gap: 85px;
+    grid-template-columns: repeat(auto-fill,minmax( min(100%,17rem),1fr));
+    background: #870000;  
+    background: -webkit-linear-gradient(to top, #190A05, #870000);  
+    background: linear-gradient(to top, #190A05, #870000,#190A05); 
+}

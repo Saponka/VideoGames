@@ -13,8 +13,7 @@ function App() {
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/home' component={Home} />
       <Route exact path='/videogames/:id' component={Detail}/>
-      <Route exact path='/create' component={CreateVideoGame} />
-      {/* <Route exact path='*' component={Error404}/>  */}    
+      <Route exact path='/create' component={CreateVideoGame} />   
       </Switch> 
     </div>
     </BrowserRouter>

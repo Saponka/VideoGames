@@ -30,7 +30,7 @@ export const getvideogame = ()=>{
 export const getName = (name) => {
     return async function(dispatch){
         try {
-            let response = await axios.get(`http://localhost:3001/videogames?name=${name}`)
+            let response = await axios.get(`http://localhost:3001/videogames/?name=${name}`)
             return dispatch({
                 type: GET_NAME,
                 payload: response.data
@@ -57,9 +57,6 @@ export const getVideoGamesId = (id) => {
 //create
 export const createVideogame = (videogame) => {
     return async function(dispatch) {
-
-            /* const create = await axios.post(`http://localhost:3001/videogames`, videogame)
-            return create  */
         
           try {
             const create = await axios.post('http://localhost:3001/videogames', videogame)
@@ -105,7 +102,6 @@ export const createVideogame = (videogame) => {
         payload: name,
     };
 };
-//sort rating
   //filters x genre
   //reset
 export const resetState = () => {

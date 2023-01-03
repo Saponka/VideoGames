@@ -1,9 +1,11 @@
 import React,{useEffect} from 'react';
+import { useParams,Link } from "react-router-dom";
+//redux
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import {getVideoGamesId,resetState} from '../../redux/actions/index'
-import '../Detail/detail.css'
+import {getVideoGamesId,resetState} from '../../redux/actions/index';
+//css
+import styles from  '../Detail/detail.module.css';
+import style from  '../LandingPage/landing.module.css';
 
 const Detail = () => {
 
@@ -20,15 +22,15 @@ const Detail = () => {
   }, [dispatch, id]);
 
   return (
-    <div id='fondo'>
-          <h1 style={{color:"white"}} >{videogame.name}</h1>
+    <div id={styles.fondo}>
+          <h1>{videogame.name}</h1>
           <div>
              <img
               src={videogame.image ? videogame.image : videogame.name}
               alt={`${videogame.name}'s`}
               width="480px"
               height="280px"
-              style={{border: "1px solid red"}}
+              style={{border:" 1px solid red"}}
              />
           </div>
           <div>
@@ -36,18 +38,17 @@ const Detail = () => {
              <p>{videogame.genres?.map((g) => (g.name ? g.name : g)).join(" | ")}</p>
              <p> 📅 {videogame.released}</p>
              <p> {videogame.publishers?.map((g) => (g.name ? g.name : g))}</p>
-             <div style={{color:"white"}}>
-                 🎮: {videogame.platforms?.join(", ")}
+             <div className={styles.plataforms}>
+                 {videogame.platforms?.join(", ")}
              </div>
           <br></br>
-          <div style={{color:"white"}}>📌
-             {videogame.description}</div>{/* usar regular expresions */}
+          <div className={styles.div}>📌{videogame.description}</div>{/* usar regular expresions */}
           {/* /<(?!\/?a(?=>|\s?.*>))\/?.*?>/g,'' */}
           {/* .replace(/<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g)*/}
         </div>
       <br></br>
       <Link to={"/home"} onClick={() => reset()}>
-        <button>Back to Home</button>
+        <button className={style.btn}>Back to Home</button>
       </Link>
     </div>
   );

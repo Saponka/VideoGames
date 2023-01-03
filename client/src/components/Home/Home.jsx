@@ -1,30 +1,42 @@
-import React,{useEffect}from 'react';
+import React,{useEffect,useState}from 'react';
+//componentes
 import Nav from '../Buscador/Nav';
 import Card from '../Card/Card';
 import Loading from '../Loading/Loading';
-import '../Card/card.css';
- //redux
+import Paginado from '../Paginacion/Paginado';
+//redux
 import { useDispatch, useSelector } from 'react-redux';
 import { getvideogame } from '../../redux/actions/index';
+//css
+import styles from '../Card/card.module.css';
 
 const Home = () => {
-    const dispatch = useDispatch();
-  const allVideos = useSelector((state)=>state.allVideogames);
+
+  const dispatch = useDispatch();
+  const allVideosGames = useSelector((state)=>state.allVideogames);
 
   useEffect(()=>{
     dispatch(getvideogame())
-  },[dispatch])
-   
+  },[dispatch]);
+
+   //paginado
+   const [page, setPage] = useState(1); // primera pag.
+   const gamesPorPage = 15;// 15 juegos x pagina
+   const lastGame = page * gamesPorPage; // 1 * 15 = 15
+   const firstGame= lastGame - gamesPorPage; // 15 - 15 = 0
+   const currentGames = allVideosGames.slice(firstGame, lastGame); //dividir los juegos x pagina
+   const paginado = (pageNumber) => { //establece el numero de pagina
+    setPage(pageNumber)
+}
+
   return (
-    <div style={{ background: "linear-gradient(to right, #1F1C18, #8E0E00)"}}>
-      <Nav/>
-      <div>
-        <h1>VideoGames Dungeon</h1>
-      </div>
-      <div className='div'>
-      {/* <Loading/> */}
-        {allVideos.length > 0
-          ? allVideos?.map((vg,id) => {
+    <div>
+      <Nav setPage={setPage} gamesPorPage={gamesPorPage}/>
+      <Paginado gamesPorPage={gamesPorPage} allVideosGames={allVideosGames.length} paginado={paginado} page={page} />
+      <div style={{height:"3000px",backgroundColor:"black"}}>
+      <div className={styles.div}>
+         {currentGames.length > 0
+          ? currentGames?.map((vg,id) => {
               return (
                 <Card
                   key={id}
@@ -35,13 +47,17 @@ const Home = () => {
                   genres={vg.genres}
                   platforms={vg.platforms}
                   description={vg.description}
+                  currentGames={currentGames}
                 />
               );
             })
           : <Loading/>}  
       </div>
+     
+      </div>
+      <Paginado gamesPorPage={gamesPorPage} allVideosGames={allVideosGames.length} paginado={paginado} page={page} />
     </div>
   )
 }
 
-export default Home
+export default Home;

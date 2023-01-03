@@ -1,0 +1,46 @@
+/* errores */
+.error {
+    color: rgb(255, 0, 51);
+    font-family: 'Creepster';
+    font-size: 25px;
+} 
+.danger{
+    border: 2px solid red;  
+}
+/* background */
+#fondo{
+    background-image: url(https://i.pinimg.com/originals/bc/23/b9/bc23b955d467d91ccbcb21ba44dabf17.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* form */
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 600px;
+    margin: auto; 
+    background: transparent;
+  
+}
+h2{
+    color: crimson;
+    font-family: 'New Rocker'; 
+    font-size: 35px;
+}
+/* labels */
+label{
+    
+    font-family: 'New Rocker';
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+}
+/* inputs */
+#urlInputSize{
+    width: 400px;
+}
+.ratingInput{
+    width: 50px;
+}

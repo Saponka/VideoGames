@@ -1,0 +1,32 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+}
+.link{
+    position: absolute;
+    top: 24%;
+    left: 37%;
+}
+.h1{
+   color: crimson;
+   font-family: 'Press Start 2P';
+}
+
+.btn{
+    border: 1px solid #ff0303;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: unset;
+    color: crimson;
+    cursor: pointer;
+    font-family: 'Press Start 2P';
+} 
+.btn:hover{
+    border: 1px solid #3eff03;
+    color: #3eff03;
+}
+
+ 

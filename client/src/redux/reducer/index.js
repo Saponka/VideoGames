@@ -12,7 +12,7 @@ import {
   
   
   const initialState = {
-      videogames:[],
+      videogames:{},
       allVideogames:[],
       genres: [],
       createdvideogames:[]
@@ -29,7 +29,7 @@ import {
           case GET_NAME:
               return{
                   ...state,
-                  allVideogames: action.payload
+                  allVideogames: action.payload,
               }
           case GET_VIDEOGAMES_BY_ID: // detalle
             return {

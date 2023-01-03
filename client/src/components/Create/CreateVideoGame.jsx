@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getByGenres,createVideogame} from '../../redux/actions'
-import { NavLink} from "react-router-dom";
-import { useHistory } from 'react-router-dom';
-import '../../components/Create/form.css';
+import React, { useEffect, useState } from 'react';
+import { Link,useHistory} from "react-router-dom";
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { getByGenres,createVideogame} from '../../redux/actions';
+//css
+/* import '../../components/Create/form.css'; */
+import styles from '../Create/form.module.css';
+import style from '../LandingPage/landing.module.css';
 
 function validate(input){
   const errors = {}
@@ -74,8 +77,6 @@ export default function CreateVideoGame() {
     ]
     //////////////////
 
-
-
     function handleSubmit(e) {
       e.preventDefault();
       if(!error.name){
@@ -95,45 +96,38 @@ export default function CreateVideoGame() {
       }
     }  
     
- 
     return (
-      <div>
-        <form onSubmit={(e) => handleSubmit(e)} >
-          
-            <h2 >CREA TU PROPIO VIDEOJUEGO</h2>
+      <div id={styles.fondo}>
+        <form onSubmit={(e) => handleSubmit(e)}  className={styles.form} >
+            <h2>CREA TU PROPIO VIDEOJUEGO</h2>
   
-            <div >
-              <label>Name</label>
+              <label>Nombre</label>
               <input
-               className={error.name && "danger"}
+                className={error.name && styles.danger}
                 type="text"
                 required
                 name="name"
                 value={input.name}
-                placeholder="Name"
+                placeholder="Nombre..."
                 onChange={(e) => handleChange(e)}
                 /> 
-              {error.name ? <span className='error'>{error.name}</span>: null}
-            </div>
-  
-  
-            <div>
-              <label >Imagen: </label>
+              {error.name ? <span className={styles.error}>{error.name}</span>: null}
+    
+              <label >Imagen</label>
               <input
-              className={error.image && "danger"}
+                id={styles.urlInputSize}
+                className={error.image && styles.danger}
                 type="text"
                 name="image"
                 value={input.image}
                 onChange={(e) => handleChange(e)}
                 placeholder='URL...'
                 /> 
-              {error.image ? <span className='error'>{error.image}</span>:null}
-            </div>
-  
-           <div>
-            <label>Fecha de lanzamiento: </label>
+              {error.image ? <span className={styles.error}>{error.image}</span>:null}
+            
+              <label>Fecha de lanzamiento</label>
               <input
-                className={error.released && 'danger'} 
+                className={error.released && styles.danger} 
                 required
                 type='date'
                 name="released"
@@ -141,71 +135,58 @@ export default function CreateVideoGame() {
                 placeholder='yyyy-mm-dd'
                 onChange={(e) => handleChange(e)}
                 /> 
-              {error.released ?<span className='error'>{error.released}</span>:null }
-            </div>
-  
-            <div >
-              <label>Rating: </label>
+              {error.released ?<span className={styles.error}>{error.released}</span>:null }
+            
+              <label>Rating</label>
               <input
-              /* className={} */
+                className={styles.ratingInput} 
                 required
                 type="number"
                 name="rating"
                 value={input.rating}
                 onChange={(e) => handleChange(e)}
                 /> 
-              {error.rating ?<span className='error'>{error.rating}</span>: null}
-            </div>
-  
-  
-            <div>
-                <label>Generos: </label>
+              {error.rating ?<span className={styles.error}>{error.rating}</span>: null}
+            
+              <label>Genero</label>
               <select  id="genres" defaultValue="" onChange={(e) => handleGenres(e)}>
-                <option  value='' disabled hidden>géneros...</option>
+                <option  value='' hidden>género...</option>
                 {  generos?.map((g) => {
                   return (
                     <option key={g.id} value={g.name}>{g.name}</option>
                     );
                   })}
               </select> 
-            </div>
-  
-  
-            <div >
-                    <label>Plataformas:  </label>
-                <select  defaultValue="" >
-                    <option value="" disabled hidden>plataformas...</option>
-                    
-                      return (
+              
+              <label>Plataforma</label>
+              <select defaultValue="" >
+                    <option value="" disabled hidden>plataforma...</option>
                         { plataformas?.map((p,id) => {
                   return (
                     <option key={id} id={p.id} value={p}>{p}</option>
                     );
                   })}
-                </select> 
-               
-            </div>
-  
-            <div >
-              <label>Descripcion: </label>
+              </select> 
+              <br/>
+              <label>Descripcion</label>
               <textarea
-              className={error.description && 'danger'}
+               className={error.description && styles.danger}
                 required
                 type="text"
+                rows={15}
+                cols={45}
                 name="description"
                 value={input.description}
                 onChange={(e) => handleChange(e)}
                 > 
-                </textarea>
-              {error.description ?<span className='error'>{error.description}</span>:null}
-            </div>
-       
-        <div>
-            <button type="submit">CREAR VIDEOGAME</button>
-        </div>
-        <div>
-            <NavLink to={'/home'}>Volver</NavLink>
-        </div>
+              </textarea>
+              {error.description ?<span className={styles.error}>{error.description}</span>:null}
+            
+            <br></br>
+            <button className={style.btn} type="submit">CREAR VIDEOGAME</button>
+            <br></br>
+            <Link to={'/home'}><button className={style.btn}>Volver</button> </Link>
+        
         </form>
   
       </div>

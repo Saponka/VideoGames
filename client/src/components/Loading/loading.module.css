@@ -1,0 +1,12 @@
+#container{
+    position: absolute; 
+    width: 500px;
+    height: 520px;
+    background-color: brown; 
+    border-radius: 50%; 
+    box-shadow: 5px 5px 15px 8px rgb(47, 184, 37);
+}
+
+#loading{
+    width: 65%;  
+}

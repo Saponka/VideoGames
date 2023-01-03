@@ -1,11 +1,14 @@
 import React from 'react';
-import './loading.css'
+//css
+import styles from  '../Loading/loading.module.css';
 
 export default function Loading(){
   return (
-    <div id='container'>
-      <h1 style={{marginLeft:"555px"}}>Loading</h1>
-        <img id='loading' src='https://s3-ap-southeast-2.amazonaws.com/p2vrtutorials/Little+Bits/Animated+Gif/Animated_Gif_Flyin/gif/mario-running.gif' alt='Loading'/>
+    <div id={styles.container}>
+      
+        <h1 style={{color:"black"}} >Loading</h1>
+        <img id={styles.loading} src='https://s3-ap-southeast-2.amazonaws.com/p2vrtutorials/Little+Bits/Animated+Gif/Animated_Gif_Flyin/gif/mario-running.gif' alt='Loading'/>
+      
     </div>
   )
 }

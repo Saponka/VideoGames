@@ -1,0 +1,16 @@
+#fondo{
+    background-image: url(https://i0.wp.com/www.marcelopedra.com.ar/blog/wp-content/uploads/2013/10/animated-gifs-of-fighting-game-backgrounds-8.gif?resize=800%2C336&ssl=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    color: white;
+    font-family: 'Rock Salt';
+}
+.plataforms{
+    color: antiquewhite;
+    font-family: 'Rock Salt';
+}
+.div{
+    color: rgb(255, 255, 255);
+}

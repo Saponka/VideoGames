@@ -1,0 +1,30 @@
+
+.nav{
+    
+    background: -webkit-linear-gradient(to right, #434343, #000000);  
+    background: linear-gradient(to right, #434343, #000000); 
+    border: 1px solid rgb(35 27 64);
+    padding: 10px;
+    height: 70px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 55px;
+    grid-template-columns: 395px 240px 226px 223px 81px 83px;
+    grid-column-gap: 10px;
+}
+
+input{
+    margin: 5px;
+}
+.btn2{
+    border: 1px solid #ff0303;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: unset;
+    color: crimson;
+    cursor: pointer;
+    font-family: 'Press Start 2P';
+    box-shadow: 0 4px 4px #f506f1, 0 5px 10px rgb(47, 184, 37);
+    transition: all 0.7s linear
+} 
