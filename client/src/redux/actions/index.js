@@ -78,7 +78,6 @@ export const createVideogame = (videogame) => {
         return dispatch({
           type: "GET_BY_GENRES",
           payload: data
-          /* .data.map(genero => genero) */
         });
       } catch (err) {
         console.error(err);
@@ -87,13 +86,16 @@ export const createVideogame = (videogame) => {
   }; 
   export const getPlatforms = () => {
     return async (dispatch) => {
-        const url = await axios.get('http://localhost:3001/videogames/platforms')
-        //console.log(url)
-        return dispatch({
-            type: 'GET_PLATFORMS',
-            payload: url.data
-        })
-    }
+        try{
+            const response = await axios.get('http://localhost:3001/platforms')
+            return dispatch({
+                type: 'GET_PLATFORMS',
+                payload: response
+            })
+        }catch (err) {
+            console.error(err);
+          }
+        }
   };
   //sort 
   export const orderByName = (name) => {

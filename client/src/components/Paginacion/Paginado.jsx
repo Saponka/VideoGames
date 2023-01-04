@@ -33,15 +33,7 @@ const Paginado = ({gamesPorPage, allVideosGames, paginado,page}) => {
         Next
       </button>
     </div>
-       /*  <nav>
-            <div >
-                {pageNumber && pageNumber.map(number => ( //si en pageNumber hay algo map
-                    <span >
-                        <button key={number}  onClick={() => paginado(number)}>{number}</button> 
-                    </span>
-                ))}
-            </div>
-        </nav> */
+      
     )
 }
 

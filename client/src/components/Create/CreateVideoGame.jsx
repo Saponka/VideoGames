@@ -38,10 +38,10 @@ export default function CreateVideoGame() {
     const generos = useSelector((state) => state.genres);
     const allGames = useSelector(state => state.allVideogames)
     const history = useHistory();
-    //const plataformas = useSelector(state => state.platforms);
   
     useEffect(() => {
       dispatch(getByGenres());
+   
       
     }, [dispatch]);
 
@@ -57,6 +57,7 @@ export default function CreateVideoGame() {
         setInput({...input,
           genres:value}) 
     }
+
     ///////////////
     const plataformas = [
       'Android',
@@ -74,7 +75,7 @@ export default function CreateVideoGame() {
       'Xbox One',
       'Xbox Series S/X',
       'Xbox',
-    ]
+    ] 
     //////////////////
 
     function handleSubmit(e) {
@@ -163,7 +164,7 @@ export default function CreateVideoGame() {
                     <option value="" disabled hidden>plataforma...</option>
                         { plataformas?.map((p,id) => {
                   return (
-                    <option key={id} id={p.id} value={p}>{p}</option>
+                    <option key={id} value={p}>{p}</option>
                     );
                   })}
               </select> 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //import { useHistory } from "react-router-dom";
 //redux
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { getName } from '../../redux/actions/index';
 import styles from '../Buscador/nav.module.css';
 
@@ -10,7 +10,6 @@ export default function Search(){
 
     const dispatch = useDispatch();
     const [name, setName] = useState('');
-    const videogames = useSelector((state) => state.allVideogames);
 
     function handleInputChange(e){
       e.preventDefault()
@@ -21,18 +20,15 @@ export default function Search(){
     function handleSubmit(e){
       e.preventDefault();
 
-      const match = videogames.find((p) => p.name  ); 
-
-       if(match){
-       dispatch(getName(match.name));
+       if(name){
+       dispatch(getName(name));
         setName('');
        }else{
         alert('Por favor coloca el nombre de un VideoGame para buscar')
         setName('');
        
        }
-      console.log(match.name);
-      console.log(match);
+      console.log(name);
     }
    
   return (    

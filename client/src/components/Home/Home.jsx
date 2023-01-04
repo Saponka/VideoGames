@@ -23,7 +23,7 @@ const Home = () => {
    const [page, setPage] = useState(1); // primera pag.
    const gamesPorPage = 15;// 15 juegos x pagina
    const lastGame = page * gamesPorPage; // 1 * 15 = 15
-   const firstGame= lastGame - gamesPorPage; // 15 - 15 = 0
+   const firstGame = lastGame - gamesPorPage; // 15 - 15 = 0
    const currentGames = allVideosGames.slice(firstGame, lastGame); //dividir los juegos x pagina
    const paginado = (pageNumber) => { //establece el numero de pagina
     setPage(pageNumber)
