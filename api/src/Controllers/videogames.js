@@ -10,7 +10,7 @@ const infoApi = async() => {
     let url = `${URL}?key=${API_KEYY}`;
     let videojuegos = [];
     try {
-        for(let i=0; i<=5; i++) { //con un for  5 veces para la API,es un arreglo.
+        for(let i=0; i<=5; i++) { //for 5 veces para la API
             const juegos = await axios.get(url) //realizo la peticion
             //en mi .data podemos encontrar dos propiedades, results que es es aquello que voy a mapear
             juegos.data.results.map(vg => { //a la respuesta/resultado lo mapeo

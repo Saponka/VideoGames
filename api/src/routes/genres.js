@@ -33,7 +33,7 @@ router.get('/', async (req, res)=>{
     try {
         const respuesta = await axios.get(`https://api.rawg.io/api/genres?key=bc1bb0ae62664232a0e926209f30dd87`)
         const genresApi = respuesta.data.results.map((genre)=> genre.name)
-        const genresDb = await Genre.findAll({atributtes:['name']}) //me traigo todos los generos que guarde en mi db
+        const genresDb = await Genre.findAll({atributtes:['name']}) 
         console.log('generos: ', genresApi)
         //console.log('generosDB: ', genresDb)
 

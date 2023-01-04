@@ -2,11 +2,13 @@ const { Router } = require('express');
 // Importar todos los routers;
 const router = Router();
 const videogamesRoute = require('./videogames');
-const genresRoute = require('./genres') 
+const genresRoute = require('./genres');
+
 
 ///////////////////
 router.use('/videogames', videogamesRoute);
 router.use('/genres', genresRoute);
+
 
 
 
