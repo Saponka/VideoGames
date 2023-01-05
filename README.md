@@ -1,6 +1,6 @@
 Individual Project - VideoGames API
 <p align="right">
-  <img height="200" src="./videogame.png" />
+  <img height="200" src="./samus.jpg" />
 </p>
 
 El Desafio fue crear una aplicacion en donde se puedan ver la informacion de distintos videogames utlizando una API externa y una Base de Datos propia.
