@@ -10,11 +10,14 @@
     justify-items: center;
     align-items: center;
     grid-template-rows: 55px;
-    grid-template-columns: auto auto auto auto auto auto ; /* 395px 240px 226px 223px 81px 83px; */
-    grid-column-gap: 10px;
+    grid-template-columns: auto auto auto auto auto auto ; 
+    grid-column-gap: 5px;
 }
 
 input{
+    margin: 5px;
+}
+.order,select{
     margin: 5px;
 }
 .btn2{
@@ -28,7 +31,7 @@ input{
     box-shadow: 0 4px 4px #f506f1, 0 5px 10px rgb(47, 184, 37);
     transition: all 0.7s linear
 } 
-@media only screen and (min-width: 375px) and (max-width: 875px) {
+@media only screen and (min-width: 375px) and (max-width: 768px) {
 	.nav{
         display: flex;
         flex-direction: column;

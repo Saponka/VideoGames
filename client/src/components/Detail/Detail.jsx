@@ -52,7 +52,6 @@ const Detail = () => {
              <p>⭐ {videogame.rating}</p>
              <p>{videogame.genres?.map((g) => (g.name ? g.name : g)).join(" | ")}</p>
              <p> 📅 {videogame.released}</p>
-             <p> {videogame.publishers?.map((g) => (g.name ? g.name : g))}</p>
              <div className={styles.plataforms}>
                  {videogame.platforms?.join(", ")}
              </div>

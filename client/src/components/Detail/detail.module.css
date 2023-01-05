@@ -3,14 +3,12 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-h1{
-    color: white;
-    font-family: 'Rock Salt';
-}
-.plataforms{
+.plataforms,h1,p{
     color: antiquewhite;
     font-family: 'Rock Salt';
+    font-weight: bold;
 }
 .div{
     color: rgb(255, 255, 255);
+    font-weight: bold;
 }

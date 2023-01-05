@@ -36,19 +36,22 @@ function reset(e) {
     
     <div className={styles.nav} >        
              <Search/>
-          <select onChange={(e) => handleName(e)}  style={{height:"fit-content"}} className={styles.btn2} >
-               <option >ORDER A-Z</option>
-               <option  value="asc">ORDER BY A TO Z</option>
-               <option  value="desc">ORDER BY Z TO A </option>
+             <div className={styles.order}>
+
+          <select onChange={(e) => handleName(e)}  className={styles.btn2} >
+               <option>ORDER A-Z</option>
+               <option value="asc">BY A TO Z</option>
+               <option value="desc"> BY Z TO A </option>
            </select>
-            <select onChange={(e) => handleRating(e)} style={{height:"fit-content"}} className={styles.btn2} >
-                <option >ORDER BY Rating</option>
+            <select onChange={(e) => handleRating(e)}  className={styles.btn2} >
+                <option>ORDER Rating</option>
                 <option value="Min">Min Rating</option>
                <option value="Max">Max Rating</option>
            </select> 
-            <Link to='/create'><button style={{height:"fit-content"}} className={styles.btn2}>Crear Juego</button></Link>  
-         <button  onClick={()=> reset() } style={{height:"fit-content"}} className={styles.btn2}>Reset</button>
-             <Link to='/'><button style={{height:"fit-content"}} className={styles.btn2}>Salir</button> </Link>   
+             </div>
+            <Link to='/create'><button  className={styles.btn2}>Crear Juego</button></Link>  
+         <button  onClick={()=> reset() }  className={styles.btn2}>Reset</button>
+             <Link to='/'><button  className={styles.btn2}>Salir</button> </Link>   
    </div>
    
   )
