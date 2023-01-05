@@ -57,4 +57,11 @@ We will be able to navigate through each one of the Home pages thanks to the pag
 
 -Technologies used:
 
-Translated with www.DeepL.com/Translator (free version)
+ BackEnd :
+
+| JavaScript |   Node.js  | Express |  Postgres  | Sequelize |
+
+
+FrontEnd :
+
+| React | Redux | HTML | CSS |
