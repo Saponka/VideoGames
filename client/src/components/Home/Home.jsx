@@ -22,18 +22,23 @@ const Home = () => {
    //paginado
    const [page, setPage] = useState(1); // primera pag.
    const gamesPorPage = 15;// 15 juegos x pagina
+
    const lastGame = page * gamesPorPage; // 1 * 15 = 15
    const firstGame = lastGame - gamesPorPage; // 15 - 15 = 0
+
    const currentGames = allVideosGames.slice(firstGame, lastGame); //dividir los juegos x pagina
    const paginado = (pageNumber) => { //establece el numero de pagina
-    setPage(pageNumber)
+    setPage(pageNumber);
+
+    ////
+    //const [/* order */, setOrder] = useState('')
 }
 
   return (
     <div>
-      <Nav setPage={setPage} gamesPorPage={gamesPorPage}/>
+      <Nav setPage={setPage} /* setOrder={setOrder} */ />
       <Paginado gamesPorPage={gamesPorPage} allVideosGames={allVideosGames.length} paginado={paginado} page={page} />
-      <div style={{height:"3000px",backgroundColor:"black"}}>
+      <div>
       <div className={styles.div}>
          {currentGames.length > 0
           ? currentGames?.map((vg,id) => {

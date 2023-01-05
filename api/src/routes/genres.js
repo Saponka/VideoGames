@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const {Genre} = require('../db.js')
+const {Genre} = require('../db.js');
 const router = Router();
-const axios = require('axios')
+const axios = require('axios');
 
 
 router.get('/', async (req, res)=>{
@@ -13,8 +13,8 @@ router.get('/', async (req, res)=>{
                 id: e.id,
                 name: e.name
             }));   
-            const guardar = await Genre.bulkCreate(map)
-            res.send(guardar) 
+            const guardar = await Genre.bulkCreate(map);
+            res.status(200).send(guardar) 
         }else{
            
              const filtroDb = generosDb.map(e=>{
@@ -23,33 +23,12 @@ router.get('/', async (req, res)=>{
                     name: e.name
                 }
             })
-            res.send(filtroDb) 
+            res.status(200).send(filtroDb) 
         }
     }catch(error) {
         res.status(404).send(error)
     }
 }) 
-/* router.get('/', async (req, res) => {
-    try {
-        const respuesta = await axios.get(`https://api.rawg.io/api/genres?key=bc1bb0ae62664232a0e926209f30dd87`)
-        const genresApi = respuesta.data.results.map((genre)=> genre.name)
-        const genresDb = await Genre.findAll({atributtes:['name']}) 
-        console.log('generos: ', genresApi)
-        //console.log('generosDB: ', genresDb)
 
-        if(genresDb.length > 0){
-            return res.status(200).send(genresDb);
-        }else{
-            genresApi.forEach((genre)=>{
-                Genre.bulkCreate([{name:genre}])
-            });
-            const allGenres = await Genre.findAll({atributtes:['name']})
-            return res.status(200).send(allGenres);
-        }
-    }catch(error) {
-        res.status(404).send(error)
-    }
-})
- */
 module.exports = router;
 

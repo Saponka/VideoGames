@@ -4,7 +4,6 @@ export const GET_VIDEOGAMES ='GET_VIDEOGAMES';
 export const GET_VIDEOGAMES_BY_ID = "GET_VIDEOGAMES_BY_ID";
 export const GET_NAME ='GET_NAME';
 export const GET_BY_GENRES = "GET_BY_GENRES";
-export const GET_PLATFORMS = 'GET_PLATFORMS';
 //
 export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 //
@@ -84,19 +83,7 @@ export const createVideogame = (videogame) => {
       }
     };
   }; 
-  export const getPlatforms = () => {
-    return async (dispatch) => {
-        try{
-            const response = await axios.get('http://localhost:3001/platforms')
-            return dispatch({
-                type: 'GET_PLATFORMS',
-                payload: response
-            })
-        }catch (err) {
-            console.error(err);
-          }
-        }
-  };
+  
   //sort 
   export const orderByName = (name) => {
     return {

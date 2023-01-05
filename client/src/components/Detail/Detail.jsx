@@ -1,5 +1,7 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import { useParams,Link } from "react-router-dom";
+//componentes
+import Loading from '../Loading/Loading';
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import {getVideoGamesId,resetState} from '../../redux/actions/index';
@@ -9,19 +11,32 @@ import style from  '../LandingPage/landing.module.css';
 
 const Detail = () => {
 
+
+  const [carga, setCarga] = useState(true);
+
   const { id } = useParams();
   const dispatch = useDispatch();
   const videogame = useSelector((state) => state.videogames);
   
+  const reg = /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g             
+ /*   /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g   */
+
+ 
+ useEffect(() => {
+   dispatch(getVideoGamesId(id)).then(() => setCarga(false))
+  }, [dispatch, id]);
+  
+  //reset
   const reset = () => {
     dispatch(resetState());
   };
 
-  useEffect(() => {
-    dispatch(getVideoGamesId(id));
-  }, [dispatch, id]);
+  if (carga) {
+    return <Loading />;
+  }
 
   return (
+
     <div id={styles.fondo}>
           <h1>{videogame.name}</h1>
           <div>
@@ -42,9 +57,7 @@ const Detail = () => {
                  {videogame.platforms?.join(", ")}
              </div>
           <br></br>
-          <div className={styles.div}>📌{videogame.description}</div>{/* usar regular expresions */}
-          {/* /<(?!\/?a(?=>|\s?.*>))\/?.*?>/g,'' */}
-          {/* .replace(/<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g)*/}
+          <div className={styles.div}>📌{videogame.description?.replace(reg,'')}</div>
         </div>
       <br></br>
       <Link to={"/home"} onClick={() => reset()}>

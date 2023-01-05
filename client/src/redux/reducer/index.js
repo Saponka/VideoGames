@@ -4,7 +4,6 @@ import {
     GET_VIDEOGAMES_BY_ID,
     CREATE_VIDEOGAME,
     GET_BY_GENRES,
-    GET_PLATFORMS,
     ORDER_BY_NAME,
     CLEAR_STATE,
 
@@ -45,13 +44,7 @@ import {
                 return {
                     ...state,
                     genres: action.payload
-                }
-          case GET_PLATFORMS:
-                    return {
-                        ...state,
-                        platforms: action.payload
-                    }
-                     
+                }             
           
         case ORDER_BY_NAME: 
                 let allGames = state.allVideogames;

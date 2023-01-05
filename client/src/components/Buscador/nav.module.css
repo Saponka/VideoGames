@@ -10,7 +10,7 @@
     justify-items: center;
     align-items: center;
     grid-template-rows: 55px;
-    grid-template-columns: 395px 240px 226px 223px 81px 83px;
+    grid-template-columns: auto auto auto auto auto auto ; /* 395px 240px 226px 223px 81px 83px; */
     grid-column-gap: 10px;
 }
 
@@ -28,3 +28,15 @@ input{
     box-shadow: 0 4px 4px #f506f1, 0 5px 10px rgb(47, 184, 37);
     transition: all 0.7s linear
 } 
+@media only screen and (min-width: 375px) and (max-width: 875px) {
+	.nav{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 170px;
+    }
+    .btn2{
+        box-shadow: 0 2px 2px #06f5c5, 0 2px 5px rgb(184, 108, 37);
+        padding: 2px;
+    }
+}

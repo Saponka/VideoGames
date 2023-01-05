@@ -28,7 +28,9 @@ function reset(e) {
   }
   
   return (
+    
     <div className={styles.nav} >
+             
              <Search/>
     
           <select onChange={(e) => handleName(e)}  style={{height:"fit-content"}} className={styles.btn2} >
@@ -41,10 +43,11 @@ function reset(e) {
                 <option value="action">action </option>
                 <option value="rpg">rpg </option>
            </select> */}
-            <Link to='/create'><button style={{height:"fit-content"}} className={styles.btn2}>Crear VideoGame</button></Link>  
+            <Link to='/create'><button style={{height:"fit-content"}} className={styles.btn2}>Crear Juego</button></Link>  
          <button  onClick={()=> reset() } style={{height:"fit-content"}} className={styles.btn2}>Reset</button>
              <Link to='/'><button style={{height:"fit-content"}} className={styles.btn2}>Salir</button> </Link>   
    </div>
+   
   )
 }
 
