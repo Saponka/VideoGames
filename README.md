@@ -1,7 +1,8 @@
-Projecto Individual - VideoGames API
+
 <p align="left">
   <img height="200" src="./samus.jpg" />
 </p>
+Projecto Individual - VideoGames API
 <p align="right">
   <img height="200" src="./Samus-Aran.png" />
 </p>
