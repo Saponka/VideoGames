@@ -10,7 +10,9 @@ La aplicacion empieza mostrando una Landing de inicio a la cual nos redirige a n
 La misma cuenta con una Barra de Navegacion en donde tenemos diferentes opciones:
 
 -Una Barra de Busqueda para traer un juego determinado y cualquier considencia con lo escrito en la busqueda;
+
 -Botones de Ordenamiento de los Juegos Alfabeticamente, tanto Asendente como desendente;
+
 -Un Formulario Controlado de creacion de Video Juegos el cual se agregara a nuestra base de datos propia.
 
 Mientras caga nuestro Home podremos ver un loading animado, una vez cargado podremos ver uns serie de Cartas en donde se muestran cada uno de los juegos;
