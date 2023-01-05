@@ -5,7 +5,7 @@ import Search from "../Buscador/Search";
 //conectar con redux
 import { useDispatch } from 'react-redux';
 //traer actions de redux
-import {getvideogame,orderByName} from '../../redux/actions/index'
+import {getvideogame,orderByName,ordenRating} from '../../redux/actions/index'
 //css
 import styles from  '../Buscador/nav.module.css';
 
@@ -20,6 +20,11 @@ const handleName = (e) => {
   history.push("/home");
   setPage(1);
 };
+const handleRating = (e) => {
+  dispatch(ordenRating(e.target.value));
+  history.push("/home");
+  setPage(1);
+};
 
 //reset
 function reset(e) {
@@ -29,20 +34,18 @@ function reset(e) {
   
   return (
     
-    <div className={styles.nav} >
-             
+    <div className={styles.nav} >        
              <Search/>
-    
           <select onChange={(e) => handleName(e)}  style={{height:"fit-content"}} className={styles.btn2} >
-               <option >ORDER</option>
+               <option >ORDER A-Z</option>
                <option  value="asc">ORDER BY A TO Z</option>
                <option  value="desc">ORDER BY Z TO A </option>
            </select>
-          {/*  <select style={{height:"fit-content"}} className={styles.btn2} >
-                <option hidden >ORDER BY GENRE</option>
-                <option value="action">action </option>
-                <option value="rpg">rpg </option>
-           </select> */}
+            <select onChange={(e) => handleRating(e)} style={{height:"fit-content"}} className={styles.btn2} >
+                <option >ORDER BY Rating</option>
+                <option value="Min">Min Rating</option>
+               <option value="Max">Max Rating</option>
+           </select> 
             <Link to='/create'><button style={{height:"fit-content"}} className={styles.btn2}>Crear Juego</button></Link>  
          <button  onClick={()=> reset() } style={{height:"fit-content"}} className={styles.btn2}>Reset</button>
              <Link to='/'><button style={{height:"fit-content"}} className={styles.btn2}>Salir</button> </Link>   

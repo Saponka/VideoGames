@@ -5,6 +5,7 @@ import {
     CREATE_VIDEOGAME,
     GET_BY_GENRES,
     ORDER_BY_NAME,
+    ORDEN_RATING,
     CLEAR_STATE,
 
   } from '../actions'
@@ -48,6 +49,7 @@ import {
           
         case ORDER_BY_NAME: 
                 let allGames = state.allVideogames;
+
                 let sortName = action.payload === 'asc' ?
                 allGames.sort((a, b) => {
                     return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
@@ -58,7 +60,26 @@ import {
                 return {
                 ...state,
                 allVideogames: sortName
-                };  
+                };
+                
+        case ORDEN_RATING:
+              
+        
+          let allRating = [...state.allVideogames] //copia del stado
+
+          allRating  =  allRating.sort((a,b) => {
+            if (a.rating <  b.rating) {//compara si viene antes 
+              return action.payload === 'Min' ? -1 : 1
+            }
+            if(a.rating > b.rating) {//si viene despues
+              return action.payload === 'Min' ? 1 : -1
+            }
+           return 0
+          })
+            return{
+            ...state,
+            allVideogames: allRating,
+          }  
 
          case CLEAR_STATE: 
             return {

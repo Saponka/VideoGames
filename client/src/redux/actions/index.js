@@ -6,8 +6,9 @@ export const GET_NAME ='GET_NAME';
 export const GET_BY_GENRES = "GET_BY_GENRES";
 //
 export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
-//
+//Order
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
+export const ORDEN_RATING = 'ORDEN_RATING';
 //
 export const CLEAR_STATE = 'CLEAR_STATE';
 
@@ -91,6 +92,12 @@ export const createVideogame = (videogame) => {
         payload: name,
     };
 };
+export const ordenRating=(payload)=>{
+	return{
+	type: ORDEN_RATING,
+	payload
+	}
+	}
   //filters x genre
   //reset
 export const resetState = () => {
