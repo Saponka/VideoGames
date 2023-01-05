@@ -1,8 +1,5 @@
+Projecto Individual - VideoGames API
 
-<p align="left">
-  <img height="200" src="./samus.jpg" />
-</p>
-                     Projecto Individual - VideoGames API
 <p align="right">
   <img height="200" src="./Samus-Aran.png" />
 </p>
@@ -38,9 +35,10 @@ FrontEnd :
 
 --------------------------------------------------------------------------------------------
 Individual Project - VideoGames API
-<p align="right">
+<p align="left">
   <img height="200" src="./samus.jpg" />
 </p>
+
 The challenge was to create an application where you can see the information of different videogames using an external API and an own database.
 
 The application starts showing a Landing page, which redirects us to Home when the 'press start' button is pressed.
