@@ -61,11 +61,10 @@ export default function CreateVideoGame() {
     if(!input.genres.includes(e.target.value)) {
       setInput({
         ...input,
-        platforms: [...input.genres, e.target.value],
+        genres: [...input.genres, e.target.value],
       })
     }
   } 
-
     ///////////////
   function handlePlatform(e) {
     setInput({
@@ -162,13 +161,13 @@ export default function CreateVideoGame() {
                      <option value={input.platforms}>PlayStation 4</option>
                         <option value={input.platforms}>PlayStation 5</option>
                         <option value={input.platforms}>Xbox One</option>
-                        <option value={input.platforms}>Xbox Series S/X</option>
+                         <option value={input.platforms}>Xbox Series S/X</option>
                         <option value={input.platforms}>Nintendo Switch</option>
                         <option value={input.platforms}>macOS</option>
                         <option value={input.platforms}>Linux</option>
                         <option value={input.platforms}>Android</option>
                         <option value={input.platforms}>iOS</option>
-                        <option value={input.platforms}>PC</option> 
+                        <option value={input.platforms}>PC</option>  
               </select> 
               <br/>
               <label>Descripcion</label>
