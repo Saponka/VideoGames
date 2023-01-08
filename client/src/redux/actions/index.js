@@ -1,14 +1,17 @@
 import axios from 'axios'
 //
-export const GET_VIDEOGAMES ='GET_VIDEOGAMES';
+export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
 export const GET_VIDEOGAMES_BY_ID = "GET_VIDEOGAMES_BY_ID";
 export const GET_NAME ='GET_NAME';
+//
 export const GET_BY_GENRES = "GET_BY_GENRES";
 //
 export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 //Order
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDEN_RATING = 'ORDEN_RATING';
+//filt
+export const  FILTER_ALL_GAMES = 'FILTER_ALL_GAMES ' ; 
 //
 export const CLEAR_STATE = 'CLEAR_STATE';
 
@@ -59,7 +62,7 @@ export const createVideogame = (videogame) => {
     return async function(dispatch) {
         
           try {
-            const create = await axios.post('http://localhost:3001/videogames', videogame)
+            const {create} = await axios.post('http://localhost:3001/videogames', videogame)
             //return create
              return dispatch({
                 type:"CREATE_VIDEOGAME",
@@ -72,19 +75,20 @@ export const createVideogame = (videogame) => {
 };
 //genero
  export const getByGenres = () => {
-    return async (dispatch) => {
+    return async function(dispatch)  {
       try {
-        const { data } = await axios.get(`http://localhost:3001/genres`);
+        const/*  { data } */ response = await axios.get(`http://localhost:3001/genres`);
         return dispatch({
           type: "GET_BY_GENRES",
-          payload: data
+          payload: response.data
         });
       } catch (err) {
         console.error(err);
       }
     };
   }; 
-  
+  //plataformas
+
   //sort 
   export const orderByName = (name) => {
     return {
@@ -92,13 +96,19 @@ export const createVideogame = (videogame) => {
         payload: name,
     };
 };
-export const ordenRating=(payload)=>{
+export const ordenRating = (payload)=>{
 	return{
 	type: ORDEN_RATING,
 	payload
 	}
 	}
-  //filters x genre
+  //filters 
+  export const filterAll = (payload)=>{
+    return{
+        type:FILTER_ALL_GAMES,
+        payload
+    }
+  }
   //reset
 export const resetState = () => {
     return {type: CLEAR_STATE}

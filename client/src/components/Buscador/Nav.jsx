@@ -1,5 +1,5 @@
 import React from "react";
-import { Link,useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 //componentes
 import Search from "../Buscador/Search";
 //conectar con redux
@@ -21,6 +21,7 @@ const handleName = (e) => {
   setPage(1);
 };
 const handleRating = (e) => {
+  
   dispatch(ordenRating(e.target.value));
   history.push("/home");
   setPage(1);

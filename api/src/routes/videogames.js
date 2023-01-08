@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const {videogameID,AllVideoGames,infoApi,infoDB,nameApi } = require('../Controllers/videogames')
+const {videogameID,AllVideoGames,infoDB,nameApi } = require('../Controllers/videogames')
 const {Videogame, Genre} = require ('../db');
 const router = Router();
 ////
@@ -30,32 +30,44 @@ router.get('/', async (req, res)=>{
 //3//get by id db y api
 router.get('/:id', async (req, res)=>{
   const {id} = req.params   
-  try {
-    //inteta buscar el id con la funcion que busca el id en api y db
+  try {//inteta buscar el id con la funcion que busca el id en api y db
       const filtroId = await videogameID(id);
       return res.status(200).send(filtroId);    
- } catch (error) {
+     }catch (error) {
       res.status(404).send(error);
-  }
+     }
 })
 //4//post crear video game
 router.post('/', async (req, res) => {
-  const {name, released, rating, platforms, description,genre,image} = req.body;
+  
+ let {name, 
+         released, 
+         rating, 
+         platforms, 
+         description,
+         genres,
+         image
+        } = req.body;
   try {
+
+    
       let newGame = await Videogame.create ({ //modelo Videogame create a new videogame
           name,
           released,
           rating,
-          platforms,
+          platforms,/* platforms: platforms.toString() */
           description,
           image
       });
+
        const relacion = await Genre.findAll({ 
-          where: {name:genre}
-      }); 
-     
-       newGame.addGenre(relacion); // agrego genero //setGenre
-       return res.status(201).send(newGame);//201 created
+         where: {name:genres},
+        }); 
+    
+      await newGame.addGenre(relacion); // agrego genero //setGenre  // agrego variable genre
+        
+      res.status(201).send(`The Game named: ${newGame} has been created succesfully.`); //201 created
+        
   } catch(error) {
       res.status(400).send(error.message);
   }
@@ -76,16 +88,17 @@ router.delete('/:id', async (req,res)=>{
     //si lo encuentra lo destroy 
    if(videoDelete){
         await videoDelete.destroy();
-       return res.send('Videojuego eliminado!'); 
+        return res.send('Videojuego eliminado!'); 
     } 
     res.status(404).send('Videojuego no encontrado')   
   }catch(error){
      res.status(400).send(error)
   } 
-})  
-////
+}) 
+////////////
+/*  */
+//////////// 
 
-///////////////////////////////
 module.exports = router
  
 

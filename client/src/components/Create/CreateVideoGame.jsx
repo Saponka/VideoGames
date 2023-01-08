@@ -4,7 +4,6 @@ import { Link,useHistory} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { getByGenres,createVideogame} from '../../redux/actions';
 //css
-/* import '../../components/Create/form.css'; */
 import styles from '../Create/form.module.css';
 import style from '../LandingPage/landing.module.css';
 
@@ -35,10 +34,11 @@ export default function CreateVideoGame() {
     
     //handler states
     const dispatch = useDispatch();
+    //selector
     const generos = useSelector((state) => state.genres);
-    const allGames = useSelector(state => state.allVideogames)
+    const allGames = useSelector(state => state.allVideogames);
     const history = useHistory();
-    //const plataformas = useSelector(state => state.platforms);
+    
   
     useEffect(() => {
       dispatch(getByGenres());
@@ -52,29 +52,27 @@ export default function CreateVideoGame() {
       setErrors(validate({ ...input, [e.target.name]: e.target.value}))
     }
        //////////////
-    function handleGenres(e) {
+    /* function handleGenres(e) {
        const {value} = e.target;
         setInput({...input,
           genres:value}) 
+    } */
+   function handleGenres(e) {
+    if(!input.genres.includes(e.target.value)) {
+      setInput({
+        ...input,
+        platforms: [...input.genres, e.target.value],
+      })
     }
+  } 
+
     ///////////////
-    const plataformas = [
-      'Android',
-      'iOS',
-      'Linux',
-      'macOS',
-      'Nintendo Switch',
-      'PC',
-      'PlayStation 3',
-      'PlayStation 4',
-      'PlayStation 5',
-      'PS Vita',
-      'Web',
-      'Xbox 360',
-      'Xbox One',
-      'Xbox Series S/X',
-      'Xbox',
-    ]
+  function handlePlatform(e) {
+    setInput({
+      ...input,
+      platforms: [...input.platforms, e.target.value],
+    })
+  }
     //////////////////
 
     function handleSubmit(e) {
@@ -159,13 +157,18 @@ export default function CreateVideoGame() {
               </select> 
               
               <label>Plataforma</label>
-              <select defaultValue="" >
+              <select defaultValue="" onChange={(e) => handlePlatform(e)} >
                     <option value="" disabled hidden>plataforma...</option>
-                        { plataformas?.map((p,id) => {
-                  return (
-                    <option key={id} id={p.id} value={p}>{p}</option>
-                    );
-                  })}
+                     <option value={input.platforms}>PlayStation 4</option>
+                        <option value={input.platforms}>PlayStation 5</option>
+                        <option value={input.platforms}>Xbox One</option>
+                        <option value={input.platforms}>Xbox Series S/X</option>
+                        <option value={input.platforms}>Nintendo Switch</option>
+                        <option value={input.platforms}>macOS</option>
+                        <option value={input.platforms}>Linux</option>
+                        <option value={input.platforms}>Android</option>
+                        <option value={input.platforms}>iOS</option>
+                        <option value={input.platforms}>PC</option> 
               </select> 
               <br/>
               <label>Descripcion</label>

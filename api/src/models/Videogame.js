@@ -16,25 +16,27 @@ module.exports = (sequelize) => {
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: true,
+      
     },
     released: {
       type: DataTypes.STRING,
-      allowNull: false,
+     
     },
     rating: {
       type: DataTypes.DECIMAL,
-      allowNull: false,
+
     },
     platforms: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.STRING), /* JSON  o TEXT*/
+      
     },
     image: {
       type: DataTypes.STRING,
       allowNull: true,
-    }
-    
+    }, 
+  },
+  {
+    timestamps: false,
   });
   
 };

@@ -7,7 +7,7 @@ import {
     ORDER_BY_NAME,
     ORDEN_RATING,
     CLEAR_STATE,
-
+    FILTER_ALL_GAMES,
   } from '../actions'
   
   
@@ -45,7 +45,8 @@ import {
                 return {
                     ...state,
                     genres: action.payload
-                }             
+                } 
+                 
           
         case ORDER_BY_NAME: 
                 let allGames = state.allVideogames;
@@ -85,6 +86,23 @@ import {
             return {
                 ...state, videogames: [],
             }
+
+            case FILTER_ALL_GAMES:
+              
+            //let allVideo =  [...state.allVideogames];
+            //let allVideoGames =  state.allVideogames;
+            
+            //const filterDd = filterAll.filter((f) => f.id.length > 5); 
+            //const filterDb = allVideo.filter((e)=> typeof e.id === 'string');
+
+            //const filterApi = allVideo.filter(e=> typeof e.id==='number')
+             
+            return{
+
+            }
+            
+            
+
               default:
                 return {
                     ...state,

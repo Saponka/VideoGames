@@ -29,14 +29,12 @@ const Home = () => {
    const currentGames = allVideosGames.slice(firstGame, lastGame); //dividir los juegos x pagina
    const paginado = (pageNumber) => { //establece el numero de pagina
     setPage(pageNumber);
-
-    ////
-    //const [/* order */, setOrder] = useState('')
+  
 }
 
   return (
     <div>
-      <Nav setPage={setPage} /* setOrder={setOrder} */ />
+      <Nav setPage={setPage} />
       <Paginado gamesPorPage={gamesPorPage} allVideosGames={allVideosGames.length} paginado={paginado} page={page} />
       <div>
       <div className={styles.div}>
