@@ -35,7 +35,7 @@ export default function CreateVideoGame() {
     //handler states
     const dispatch = useDispatch();
     //selector
-    const generos = useSelector((state) => state.genres);
+    const generos = useSelector((state) => state.genres);// el useSelector lee un valor del estado del store(reducer) y se suscribe a las actualizaciones del mismo.
     const allGames = useSelector(state => state.allVideogames);
     const history = useHistory();
     
