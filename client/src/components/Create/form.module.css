@@ -44,3 +44,8 @@ label{
 .ratingInput{
     width: 50px;
 }
+.containerPlat{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

@@ -20,9 +20,9 @@ router.get('/', async (req, res)=>{
 
             let allGenre = await Genre.findAll({atributtes: ["id", "name"]});
             return res.status(200).send(allGenre);
-            //Para esta ruta utilice los datos de la api para guardar los tipos de Pokemon que hay
+            //Para esta ruta utilice los datos de la api para guardar los tipos de videogames que hay
             //si la base de datos tiene elementos dentro, que los devuelva, sino
-            //que los cree por medio de un bulkCreate dado el name de cada tipo de pokemon de la api
+            //que los cree por medio de un bulkCreate dado el name de cada tipo de game de la api
         }
         
     } catch (error) {
@@ -93,12 +93,4 @@ module.exports = router;
     } catch (error) {
         res.status(404).send("There's no Pokemons with that Type");
     } */
-    /* router.get("/", async (req, res) => {
-  try {
-    const genresDB = await Genre.findAll();
-
-    res.json(genresDB);
-  } catch (e) {
-    res.status(404).json({ e });
-  }
-}); */
+   

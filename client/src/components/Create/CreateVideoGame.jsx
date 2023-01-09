@@ -39,24 +39,19 @@ export default function CreateVideoGame() {
     const allGames = useSelector(state => state.allVideogames);
     const history = useHistory();
     
-  
+  //effect
     useEffect(() => {
       dispatch(getByGenres());
       
     }, [dispatch]);
 
-          //////
+    ///handlers
     function handleChange(e) {
       e.preventDefault();
       setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
       setErrors(validate({ ...input, [e.target.name]: e.target.value}))
     }
-       //////////////
-    /* function handleGenres(e) {
-       const {value} = e.target;
-        setInput({...input,
-          genres:value}) 
-    } */
+  
    function handleGenres(e) {
     if(!input.genres.includes(e.target.value)) {
       setInput({
@@ -66,12 +61,34 @@ export default function CreateVideoGame() {
     }
   } 
     ///////////////
-  function handlePlatform(e) {
+  const plataformas =[
+    'Android',
+    'iOS',
+    'Linux',
+    'macOS',
+    'Nintendo Switch',
+    'PC',
+    'PlayStation 3',
+    'PlayStation 4',
+    'PlayStation 5',
+    'PS Vita',
+    'Web',
+    'Xbox 360',
+    'Xbox One',
+    'Xbox Series S/X',
+    'Xbox',
+  ]
+
+  const handlePlatform =(e)=>{
+    let array = input.platforms
+    array.push(e.target.value)
     setInput({
       ...input,
-      platforms: [...input.platforms, e.target.value],
+      plataformas:array
     })
-  }
+    const validations = validate(input);
+    setErrors(validations)
+     }
     //////////////////
 
     function handleSubmit(e) {
@@ -155,20 +172,39 @@ export default function CreateVideoGame() {
                   })}
               </select> 
               
-              <label>Plataforma</label>
-              <select defaultValue="" onChange={(e) => handlePlatform(e)} >
+              <label>Plataformas</label>
+              {/* tipo check box */}
+              <div className={styles.containerPlat}>
+              {plataformas.map((p,id)=> {
+            return(
+              <div key={id} >
+                <ul>
+                  <li>
+              <input
+                            
+              type='checkbox'
+              id={p}
+              name={p}
+              value={ p }
+              disabled ={input.platforms.length > 4 && !input.platforms.includes(p)} 
+              selected={ input.platforms.includes(p) } onChange={ handlePlatform }
+              />
+              <label id={p} >{p}</label>
+              </li>
+              </ul>
+              </div>
+              )})
+            }
+            </div> 
+            {/* tipo select */}
+             {/*  <select defaultValue=""  onChange={ handlePlatform } >
                     <option value="" disabled hidden>plataforma...</option>
-                     <option value={input.platforms}>PlayStation 4</option>
-                        <option value={input.platforms}>PlayStation 5</option>
-                        <option value={input.platforms}>Xbox One</option>
-                         <option value={input.platforms}>Xbox Series S/X</option>
-                        <option value={input.platforms}>Nintendo Switch</option>
-                        <option value={input.platforms}>macOS</option>
-                        <option value={input.platforms}>Linux</option>
-                        <option value={input.platforms}>Android</option>
-                        <option value={input.platforms}>iOS</option>
-                        <option value={input.platforms}>PC</option>  
-              </select> 
+                    {  plataformas?.map((p,id) => {
+                  return (
+                    <option key={id} value={p}>{p}</option>
+                    );
+                  })}
+              </select>  */}
               <br/>
               <label>Descripcion</label>
               <textarea

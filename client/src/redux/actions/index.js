@@ -87,8 +87,7 @@ export const createVideogame = (videogame) => {
       }
     };
   }; 
-  //plataformas
-
+  
   //sort 
   export const orderByName = (name) => {
     return {
