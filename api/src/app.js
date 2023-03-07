@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-const cors = require('cors')
+
 require('./db.js');
 
 const server = express();
@@ -15,7 +15,7 @@ server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
 //cors 
-server.use(cors());
+
 
 //middleware de headers
 server.use((req, res, next) => {
