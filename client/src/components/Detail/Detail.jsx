@@ -19,7 +19,6 @@ const Detail = () => {
   const videogame = useSelector((state) => state.videogames);
   
   const reg = /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g             
- /*   /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g   */
 
  
  useEffect(() => {
@@ -49,11 +48,10 @@ const Detail = () => {
              />
           </div>
           <div>
-             <p>⭐ {videogame.rating}</p>
-             <p>{videogame.genres?.map((g) => (g.name ? g.name : g)).join(" | ")}</p>
-             <p> 📅 {videogame.released}</p>
-             <div className={styles.plataforms}>
-                 {videogame.platforms?.join(", ")}
+             <p>Rating : {videogame.rating}⭐</p>
+             <p>Genre : {videogame.genres?.map((g) => (g.name ? g.name : g)).join(" | ")}</p>
+             <p> 📅 Released :  {videogame.released}</p>
+             <div className={styles.plataforms}> Platforms : {videogame.platforms?.join(", ")}
              </div>
           <br></br>
           <div className={styles.div}>📌{videogame.description?.replace(reg,'')}</div>

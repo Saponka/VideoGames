@@ -13,6 +13,7 @@ export default function Card({id,name,image,rating}) {
         </Link>
       <img className={styles.img} src={image} alt={name}  />
       <p>Rating: {rating } ⭐</p>
+      
       </div>        
   )
 }

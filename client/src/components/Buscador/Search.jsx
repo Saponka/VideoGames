@@ -9,6 +9,7 @@ import styles from '../Buscador/nav.module.css';
 export default function Search(){
 
     const dispatch = useDispatch();
+    
     const [name, setName] = useState('');
 
     function handleInputChange(e){

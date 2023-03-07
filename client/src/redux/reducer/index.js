@@ -32,7 +32,7 @@ function rootReducer(state = initialState, action) {
         allVideogames: action.payload,
       };
     //Detalle
-    case GET_VIDEOGAMES_BY_ID: 
+    case GET_VIDEOGAMES_BY_ID:
       return {
         ...state,
         videogames: action.payload,
@@ -99,39 +99,31 @@ function rootReducer(state = initialState, action) {
       const filterApi = allVideoGames.filter((f) => typeof f.id === "number");
       return {
         ...state,
-        allVideogames: action.payload === "all"
-        ? state.allVideogames : action.payload === 'db'
-        ? filterDb : filterApi 
+        allVideogames:
+          action.payload === "all"
+            ? state.allVideogames
+            : action.payload === "db"
+            ? filterDb
+            : filterApi,
       };
-        /*  case FILTRO_GENRES:
-          const genresInfo = state.allVideogames
-          const filtroGenero = genresInfo.filter(video => 
-            video.genres?.some(videito => videito.toLowerCase() === action.payload.toLowerCase()))
-          return{
-              ...state,
-              videogames: action.payload === "All" ? state.allVideogames : filtroGenero
-          } */
-           case FILTER_GENRES:
-            let aux = [];
-            if(action.payload) {
-                aux = state.allVideogames.filter(e => {
-                    if(e.genres.length === 0){
-                        return e.genres
-                    }
-                    /* else if(e.genres.some(e => e.name === action.payload)) {
-                        return e.genres.map(el => el.name)
-                    } */ else {
-                        return e.genres.includes(action.payload)
-                    }
-                })
-            } else {
-                aux = state.allVideogames
-            }
+    case FILTER_GENRES:
+      let aux = [];
+      if (action.payload) {
+        aux = state.allVideogames.filter((e) => {
+          if (e.genres.length === 0) {
+            return e.genres;
+          } else {
+            return e.genres.includes(action.payload);
+          }
+        });
+      } else {
+        aux = state.allVideogames;
+      }
 
-            return {
-                ...state,
-                allVideogames: aux,
-            } 
+      return {
+        ...state,
+        allVideogames: aux,
+      };
     //Default
     default:
       return {
@@ -140,21 +132,5 @@ function rootReducer(state = initialState, action) {
   }
 }
 export default rootReducer;
-/* 
-          const AllGames = state.videogames;
-          let filterGames = [];
-    
-                switch(action.payload) {
-                    case 'api': filterGames = AllGames.filter(el => typeof (el.id) === 'number'); 
-                    break;
-                    case 'db': filterGames = AllGames.filter(el => isNaN(el.id));
-                     break;
-                    default: filterGames = AllGames; 
-                    break;
-                }
-                return {
-                    ...state,
-                    allVideogames: filterGames
-                };
-                } */
+
 

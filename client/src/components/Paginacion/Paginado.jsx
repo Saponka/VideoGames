@@ -11,16 +11,18 @@ const Paginado = ({gamesPorPage, allVideosGames, paginado,page}) => {
     }
 
     return (
-        <div style={{backgroundColor:"black"}} >
-      <button className={styles.btn} onClick={page > 1 ? () => paginado(page - 1) : null}
-        disabled={page === 1 ? true : false}
+      <div style={{backgroundColor:"black"}} >
+      <button 
+      className={styles.btn} 
+      onClick={page > 1 ? () => paginado(page - 1) : null}
+      disabled={page === 1 ? true : false}
       >
         Prev
       </button>
       {pageNumber.length > 0 &&
         pageNumber.map((number) => { //numeros de pagina
           return (
-            <button className={styles.btn} key={number} onClick={() => paginado(number)}>
+            <button  className={styles.btn} key={number} onClick={() => paginado(number)}>
               {number}
             </button>
           );

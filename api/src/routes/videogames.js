@@ -40,7 +40,8 @@ router.get('/:id', async (req, res)=>{
 //4//post crear video game
 router.post('/', async (req, res) => {
   
- let {name, 
+ let {
+         name, 
          released, 
          rating, 
          platforms, 
@@ -95,10 +96,7 @@ router.delete('/:id', async (req,res)=>{
      res.status(400).send(error)
   } 
 }) 
-////////////
 
-
-//////////// 
 
 module.exports = router
  
