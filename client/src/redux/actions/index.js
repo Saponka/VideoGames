@@ -13,7 +13,7 @@ export const CLEAR_STATE = 'CLEAR_STATE';
 export const getvideogame = () => {
   return async function (dispatch) {
     try {
-      let videogames = await axios.get("http://localhost:3001/videogames");
+      let videogames = await axios.get("https://videogames-production-74f4.up.railway.app/videogames");
       return dispatch({
         type: GET_VIDEOGAMES,
         payload: videogames.data,
@@ -28,7 +28,7 @@ export const getName = (name) => {
   return async function (dispatch) {
     try {
       let response = await axios.get(
-        `http://localhost:3001/videogames/?name=${name}`
+        `https://videogames-production-74f4.up.railway.app/videogames/?name=${name}`
       );
       return dispatch({
         type: GET_NAME,
@@ -44,7 +44,7 @@ export const getVideoGamesId = (id) => {
   return async function (dispatch) {
     try {
       const videogames = await axios.get(
-        `http://localhost:3001/videogames/${id}`
+        `https://videogames-production-74f4.up.railway.app/videogames/${id}`
       );
       return dispatch({
         type: GET_VIDEOGAMES_BY_ID,
@@ -59,7 +59,7 @@ export const getVideoGamesId = (id) => {
 export const getByGenres = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`http://localhost:3001/genres`);
+      const response = await axios.get(`https://videogames-production-74f4.up.railway.app/genres`);
       return dispatch({
         type: "GET_BY_GENRES",
         payload: response.data,
@@ -74,7 +74,7 @@ export const createVideogame = (videogame) => {
   return async function (dispatch) {
     try {
       const { create } = await axios.post(
-        "http://localhost:3001/videogames",videogame);
+        "https://videogames-production-74f4.up.railway.app/videogames",videogame);
       return dispatch({
         type: "CREATE_VIDEOGAME",
         payload: create,
