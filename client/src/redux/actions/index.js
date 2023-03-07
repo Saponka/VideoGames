@@ -10,6 +10,7 @@ export const FILTER_ALL_GAMES = 'FILTER_ALL_GAMES ' ;
 export const FILTER_GENRES = 'FILTER_GENRES ' ;
 export const CLEAR_STATE = 'CLEAR_STATE';
 
+
 export const getvideogame = () => {
   return async function (dispatch) {
     try {
