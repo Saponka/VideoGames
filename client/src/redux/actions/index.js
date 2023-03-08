@@ -15,7 +15,7 @@ export const CLEAR_STATE = 'CLEAR_STATE';
 export const getvideogame = () => {
   return async function (dispatch) {
     try {
-      let videogames = await axios.get("https://videogames-production-1c30.up.railway.app/videogames");
+      let videogames = await axios("https://videogames-production-1c30.up.railway.app/videogames");
       return dispatch({
         type: GET_VIDEOGAMES,
         payload: videogames.data,
