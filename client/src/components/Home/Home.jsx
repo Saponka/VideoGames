@@ -43,7 +43,7 @@ const Home = () => {
               return (
                 <Card
                   key={id}
-                  id={vg._id} 
+                  id={vg.id} 
                   name={vg.name}
                   image={vg.image}
                   rating={vg.rating}
