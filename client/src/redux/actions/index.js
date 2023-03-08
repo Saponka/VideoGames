@@ -63,7 +63,7 @@ export const getByGenres = () => {
         payload: response.data,
       });
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
 }; 
