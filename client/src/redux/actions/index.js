@@ -14,7 +14,7 @@ export const CLEAR_STATE = 'CLEAR_STATE';
 export const getvideogame = () => {
   return async function (dispatch) {
     try {
-      let videogames = await axios.get("https://videogames-production-74f4.up.railway.app/videogames");
+      let videogames = await axios.get("https://videogames-production-1101.up.railway.app/videogames");
       return dispatch({
         type: GET_VIDEOGAMES,
         payload: videogames.data,
@@ -28,9 +28,7 @@ export const getvideogame = () => {
 export const getName = (name) => {
   return async function (dispatch) {
     try {
-      let response = await axios.get(
-        `https://videogames-production-74f4.up.railway.app/videogames/?name=${name}`
-      );
+      let response = await axios.get(`https://videogames-production-1101.up.railway.app/videogames/?name=${name}`);
       return dispatch({
         type: GET_NAME,
         payload: response.data,
@@ -44,9 +42,7 @@ export const getName = (name) => {
 export const getVideoGamesId = (id) => {
   return async function (dispatch) {
     try {
-      const videogames = await axios.get(
-        `https://videogames-production-74f4.up.railway.app/videogames/${id}`
-      );
+      const videogames = await axios.get(`https://videogames-production-1101.up.railway.app/videogames/${id}`);
       return dispatch({
         type: GET_VIDEOGAMES_BY_ID,
         payload: videogames.data,
@@ -60,7 +56,7 @@ export const getVideoGamesId = (id) => {
 export const getByGenres = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`https://videogames-production-74f4.up.railway.app/genres`);
+      const response = await axios.get(`https://videogames-production-1101.up.railway.app/genres`);
       return dispatch({
         type: "GET_BY_GENRES",
         payload: response.data,
@@ -74,8 +70,7 @@ export const getByGenres = () => {
 export const createVideogame = (videogame) => {
   return async function (dispatch) {
     try {
-      const { create } = await axios.post(
-        "https://videogames-production-74f4.up.railway.app/videogames",videogame);
+      const { create } = await axios.post("https://videogames-production-1101.up.railway.app/videogames",videogame);
       return dispatch({
         type: "CREATE_VIDEOGAME",
         payload: create,
