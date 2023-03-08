@@ -38,12 +38,12 @@ const Home = () => {
       <Paginado gamesPorPage={gamesPorPage} allVideosGames={allVideosGames.length} paginado={paginado} page={page} />
       <div>
       <div className={styles.div}>
-         {currentGames
+         {currentGames.length > 0
           ? currentGames?.map((vg,id) => {
               return (
                 <Card
                   key={id}
-                  id={vg.id} 
+                  /* id={vg.id}  */
                   name={vg.name}
                   image={vg.image}
                   rating={vg.rating}
