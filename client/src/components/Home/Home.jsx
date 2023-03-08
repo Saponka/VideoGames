@@ -39,7 +39,7 @@ const Home = () => {
       <div>
       <div className={styles.div}>
          {currentGames.length > 0
-          ? currentGames?.map((vg,id) => {
+          ? currentGames?.map(({vg,id}) => {
               return (
                 <Card
                   key={id}
