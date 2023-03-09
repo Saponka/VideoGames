@@ -1,13 +1,13 @@
 const axios = require('axios');
 require('dotenv').config();
-const {API_KEY,API_KEYY} = process.env;
-const URL= 'https://api.rawg.io/api/games';
+const {API_KEY} = process.env;
+const URL = 'https://api.rawg.io/api/games';
 const URL2 =  'https://api.rawg.io/api/games?search=';
 const {Videogame, Genre} = require ('../db');
 ///////
 //SOLICITUD PARA TRAERME MIS 100 VIDEOJUEGOS//A LA API
 const infoApi = async() => {
-    let url = `${URL}?key=${API_KEYY}`;
+    let url = `${URL}?key=5eedf5b2fac84f429c77aa6aac19ee9c`;
     let videojuegos = [];
     try {
         for(let i=0; i<=5; i++) { //for 5 veces para la API
@@ -62,7 +62,7 @@ const AllVideoGames = async () => {
 //////////////////////////////////////
 //SOLICITUD PARA MIS REQUEST POR QUERY//A MI API
 const nameApi = async (name) => {
-    const dataSearch = await axios.get(`${URL2}${name}&key=${API_KEYY}`) 
+    const dataSearch = await axios.get(`${URL2}${name}&key=5eedf5b2fac84f429c77aa6aac19ee9c`) 
   
     try {
         const videogameSearch = await dataSearch.data.results.map(e => { 
@@ -85,7 +85,7 @@ const nameApi = async (name) => {
 //SOLICITUD PARA MIS REQUEST POR PARAMS 
 const idApi = async (id) => {
     try {
-        const ApID = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEYY}`)
+        const ApID = await axios.get(`https://api.rawg.io/api/games/${id}?key=5eedf5b2fac84f429c77aa6aac19ee9c`)
         if(ApID) {
             const vgId = await ApID.data
             const info = {
