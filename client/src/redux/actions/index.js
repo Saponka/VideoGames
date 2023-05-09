@@ -18,7 +18,7 @@ export const getvideogame = () => {
       let videogames = await axios.get("https://videogames-production-3dbe.up.railway.app/videogames");
       return dispatch({
         type: GET_VIDEOGAMES,
-        payload: videogames.data,
+        payload: videogames.data ,
       });
     } catch (error) {
       console.log(error);
